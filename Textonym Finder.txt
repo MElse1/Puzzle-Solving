@@ -1,0 +1,59 @@
+#When I made this my install of linux was using a strange wordlist for the english language run "sudo apt-get wamerican-insane" and then "sudo select-default-wordlist" on your machine to install and use an extensive english wordlist
+#!/usr/bin/env bash
+
+#word to turn to T9 Input
+read -p "Enter word to find textonyms for:" startword
+#lower the case of the word
+startword=${startword,,}
+#get length of entered word (probably could be rolled into the for clause, was initially planned to be used in multiple places
+startlength=${#startword}
+#declare variables, $t9regex is declared with a leading ^ 
+t9numeric=""
+t9regex="^"
+#for loop to go through the input word
+for ((i=0;i<"$startlength";i++))
+do
+#Assign letter to a variable because I couldn't get the case command to work with the ${startword:i:1}
+seq="${startword:i:1}"
+#Go through the potential values for the differerent letters and add to the regex input string and the number on the T9 system to the numeric string
+	case $seq in
+	[a-c] )
+	t9regex="${t9regex}[a-c]{1}"
+	t9numeric="${t9numeric}2" ;;
+	[d-f] )
+	t9regex="${t9regex}[d-f]{1}"
+	t9numeric="${t9numeric}3" ;;
+	[g-i] )
+	t9regex="${t9regex}[g-i]{1}"
+	t9numeric="${t9numeric}4" ;;
+	[j-l] )
+	t9regex="${t9regex}[j-l]{1}"
+	t9numeric="${t9numeric}5" ;;
+	[m-o] )
+	t9regex="${t9regex}[m-o]{1}"
+	t9numeric="${t9numeric}6" ;;
+	[p-s] )
+	t9regex="${t9regex}[p-s]{1}"
+	t9numeric="${t9numeric}7" ;;
+	[t-v] )
+	t9regex="${t9regex}[t-v]{1}"
+	t9numeric="${t9numeric}8" ;;
+	[w-z] )
+	t9regex="${t9regex}[w-z]{1}"
+	t9numeric="${t9numeric}9" ;;
+	esac
+done
+#append trailing $ to $t9regex
+t9regex="${t9regex}$"
+#print off numeric value of entered word
+echo "The numeric value of your word is $t9numeric"
+#get the number of results to change output for no match situations
+resultnum=$(grep -E $t9regex /usr/share/dict/words | grep -v $startword | wc -l)
+#logic test to determine if there are no results
+if [ "$resultnum" = 0 ]
+then
+	echo "There are no textonyms for ${startword^}" in your dictionary"
+else
+	echo "Here are the english textonyms for ${startword^}"
+#search the selected wordlist for words matching the regex string, remove entered word from results
+	grep -E $t9regex /usr/share/dict/words | grep -v $startword
