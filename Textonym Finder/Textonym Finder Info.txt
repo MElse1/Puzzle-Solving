@@ -1,0 +1,1 @@
+A Textonym is when two words can be made with the same T9 series of numbers. For example, golf, when converted to T9 is the number series 4653, hole's T9 conversion is also 4653, meaning those two words are textonyms.  I was tasked with making this solution in bash, so the end product is a .sh file.
