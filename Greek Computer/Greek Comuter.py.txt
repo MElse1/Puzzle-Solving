@@ -1,0 +1,134 @@
+#Initialize Arrays based on the values on the bottommost ring
+Spin1 = 0
+FinalFortyTwo = 0
+while Spin1 < 12:
+    Spin2 = 0
+    Ring1 = [2,5,10,7,16,8,7,8,8,3,4,12]
+    Ring2 = [3,3,14,14,21,21,9,9,4,4,6,6]
+    Ring3 = [8,9,10,11,12,13,14,15,4,5,6,7]
+    Ring4 = [14,11,14,14,11,14,11,14,11,11,14,11]
+    Ring1[(0+Spin1)%12] = 1
+    Ring1[(2+Spin1)%12] = 9
+    Ring1[(4+Spin1)%12] = 12
+    Ring1[(6+Spin1)%12] = 6
+    Ring1[(8+Spin1)%12] = 10
+    Ring1[(10+Spin1)%12] = 10
+    Ring2[(0+Spin1)%12] = 3
+    Ring2[(1+Spin1)%12] = 26
+    Ring2[(2+Spin1)%12] = 6
+    Ring2[(4+Spin1)%12] = 2
+    Ring2[(5+Spin1)%12] = 13
+    Ring2[(6+Spin1)%12] = 9
+    Ring2[(8+Spin1)%12] = 17
+    Ring2[(9+Spin1)%12] = 19
+    Ring2[(10+Spin1)%12] = 3
+    Ring2[(11+Spin1)%12] = 12
+    Ring3[(0+Spin1)%12] = 9
+    Ring3[(1+Spin1)%12] = 20
+    Ring3[(2+Spin1)%12] = 12
+    Ring3[(3+Spin1)%12] = 3
+    Ring3[(4+Spin1)%12] = 6
+    Ring3[(6+Spin1)%12] = 14
+    Ring3[(7+Spin1)%12] = 12
+    Ring3[(8+Spin1)%12] = 3
+    Ring3[(9+Spin1)%12] = 8
+    Ring3[(10+Spin1)%12] = 9
+    Ring4[(0+Spin1)%12] = 7
+    Ring4[(2+Spin1)%12] = 9
+    Ring4[(4+Spin1)%12] = 7
+    Ring4[(5+Spin1)%12] = 14
+    Ring4[(6+Spin1)%12] = 11
+    Ring4[(8+Spin1)%12] = 8
+    Ring4[(10+Spin1)%12] = 16
+    Ring4[(11+Spin1)%12] = 2
+    Ring22 = Ring2 [ : ]
+    Ring32 = Ring3 [ : ]
+    Ring42 = Ring4 [ : ]
+    Spin1 += 1
+    while Spin2 < 12:
+        Spin3 = 0
+        Ring2 = Ring22 [ : ]
+        Ring3 = Ring32 [ : ]
+        Ring4 = Ring42 [ : ]
+        Ring2[(0+Spin2)%12] = 5
+        Ring2[(2+Spin2)%12] = 10
+        Ring2[(4+Spin2)%12] = 8
+        Ring2[(6+Spin2)%12] = 22
+        Ring2[(8+Spin2)%12] = 16
+        Ring2[(10+Spin2)%12] = 9
+        Ring3[(0+Spin2)%12] = 21
+        Ring3[(1+Spin2)%12] = 6
+        Ring3[(2+Spin2)%12] = 15
+        Ring3[(3+Spin2)%12] = 4
+        Ring3[(4+Spin2)%12] = 9
+        Ring3[(5+Spin2)%12] = 18
+        Ring3[(6+Spin2)%12] = 11
+        Ring3[(7+Spin2)%12] = 26
+        Ring3[(8+Spin2)%12] = 14
+        Ring3[(9+Spin2)%12] = 1
+        Ring3[(10+Spin2)%12] = 12
+        Ring4[(0+Spin2)%12] = 9
+        Ring4[(1+Spin2)%12] = 13
+        Ring4[(2+Spin2)%12] = 9
+        Ring4[(3+Spin2)%12] = 7
+        Ring4[(4+Spin2)%12] = 13
+        Ring4[(5+Spin2)%12] = 21
+        Ring4[(6+Spin2)%12] = 17
+        Ring4[(7+Spin2)%12] = 4
+        Ring4[(8+Spin2)%12] = 5
+        Ring4[(10+Spin2)%12] = 7
+        Ring4[(11+Spin2)%12] = 8
+        Spin2 += 1
+        Ring33 = Ring3 [ : ]
+        Ring43 = Ring4 [ : ]
+        while Spin3 < 12:
+            Spin4 = 0
+            Ring3 = Ring33 [ : ]
+            Ring4 = Ring43 [ : ]        
+            Ring3[(0+Spin3)%12] = 4
+            Ring3[(2+Spin3)%12] = 7
+            Ring3[(3+Spin3)%12] = 15
+            Ring3[(6+Spin3)%12] = 14
+            Ring3[(8+Spin3)%12] = 9
+            Ring3[(10+Spin3)%12] = 12
+            Ring4[(0+Spin3)%12] = 7
+            Ring4[(1+Spin3)%12] = 3
+            Ring4[(3+Spin3)%12] = 6
+            Ring4[(5+Spin3)%12] = 11
+            Ring4[(6+Spin3)%12] = 11
+            Ring4[(7+Spin3)%12] = 6
+            Ring4[(8+Spin3)%12] = 11
+            Ring4[(10+Spin3)%12] = 6
+            Ring4[(11+Spin3)%12] = 17
+            Spin3 += 1
+            Ring44 = Ring4 [ : ]
+            while Spin4 < 12:
+                EvalArray = []
+                EvalCount = 0
+                FortyTwoEval = 0
+                Ring4 = Ring44 [ : ]
+                Ring4[(0+Spin4)%12] = 3
+                Ring4[(2+Spin4)%12] = 6
+                Ring4[(4+Spin4)%12] = 10
+                Ring4[(6+Spin4)%12] = 7
+                Ring4[(8+Spin4)%12] = 15
+                Ring4[(10+Spin4)%12] = 8
+                Spin4 += 1
+                while EvalCount < 12:    
+                    EvalArray.append(Ring1[EvalCount]+Ring2[EvalCount]+Ring3[EvalCount]+Ring4[EvalCount])
+                    EvalCount += 1            
+                for EvalNumber in EvalArray:
+                    if EvalNumber == 42:
+                        FortyTwoEval += 1
+                if FortyTwoEval == 12:
+                    FinalRing1 = Ring1
+                    FinalRing2 = Ring2
+                    FinalRing3 = Ring3
+                    FinalRing4 = Ring4
+                    print("Solution Found")
+                    input()
+print("The below combination results in 12 42s.")
+print("Ring 1:",FinalRing1)
+print("Ring 2:",FinalRing2)
+print("Ring 3:",FinalRing3)
+print("Ring 4:",FinalRing4)
