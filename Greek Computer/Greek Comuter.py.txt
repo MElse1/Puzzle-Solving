@@ -125,8 +125,6 @@ while Spin1 < 12:
                     FinalRing2 = Ring2
                     FinalRing3 = Ring3
                     FinalRing4 = Ring4
-                    print("Solution Found")
-                    input()
 print("The below combination results in 12 42s.")
 print("Ring 1:",FinalRing1)
 print("Ring 2:",FinalRing2)
