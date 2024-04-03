@@ -1,2 +1,3 @@
 Task: My son came home with an april fools word search, I realized that none of the words that you were supposed to find were in the search grid after I spent entirely to much time looking.  But it got me thinking, I've been building something that uses OCR for a project I'm playing with, could I use what I've learned with OCR to make a python script that could solve a word search.
 
+My plan with this task is to push every change to github before I test it, so I can kind of track my thinking in progress
