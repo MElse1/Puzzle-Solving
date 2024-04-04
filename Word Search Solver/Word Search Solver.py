@@ -129,4 +129,4 @@ for length in WordListLen:
                     c += 1
                     d -= 1
                     if SearchString in WordList and len(SearchString) == length:
-                        print(SearchString,"located at x:",l - xval,"y:", l - yval,"Going Down and Left")                        
+                        print(SearchString,"located at x:",l - xval,"y:", l - yval,"Going Down and Right")                        
