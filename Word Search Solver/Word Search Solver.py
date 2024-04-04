@@ -44,7 +44,7 @@ for length in WordListLen:
     y = 0
 ## Reverse horizontal search pattern
     for array in DummyArrayofArrays:
-        l = len(array)  # 4
+        l = len(array)  # x dimension of grid (4)
         x = 0 # starting position
         for letters in array: # iterate through each letter in array
             if x + length <= l: # starting position + search length needs to be less than array length
@@ -57,3 +57,15 @@ for length in WordListLen:
                     print(SearchString,"located at x:", l - x, "y:", y + 1, "Going Left")
                 x += 1
         y += 1
+## forward vertical search pattern
+    x = 0
+    for yval in range(len(array)): #establish incrementing y value
+        l = len(DummyArrayofArrays) # x dimension of grid
+        y = 0 # starting position
+        for xval in range(l):  # establish incrementing x value
+            if y + length <= l: # determine if the resultant string would extend past the edge of the grid
+                SearchString = ""
+                while y > length:
+                    SearchString += DummyArrayofArrays[y + yval][xval]
+                    y += 1
+                print(SearchString)
