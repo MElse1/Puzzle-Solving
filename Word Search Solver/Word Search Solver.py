@@ -67,18 +67,18 @@ for length in WordListLen:
                 SearchString = ""
                 c = 0
                 while c < length:
-                    SearchString = SearchString + str(DummyArrayofArrays[c + y][xval])
+                    SearchString = SearchString + str(DummyArrayofArrays[c + yval][xval])
                     c += 1
-                    if SearchString in WordList:
-                        print(SearchString,"located at x:", xval + 1,"y:", y + 1,"Going Down")
+                    if SearchString in WordList and len(SearchString) == l:
+                        print(SearchString,"located at x:", xval + 1,"y:", yval + 1,"Going Down")
 ## reverse vertical search pattern
     for yval in range(len(array)): #establish incrementing y value
         for xval in range(l):  # establish incrementing x value
             if yval + length <= l: # determine if the resultant string would extend past the edge of the grid
                 SearchString = ""
                 c = -1
-                while c < length:
-                    SearchString = SearchString + str(DummyArrayofArrays[c - y][xval])
+                while abs(c + 1) < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c - yval][xval])
                     c -= 1
-                    if SearchString in WordList:
+                    if SearchString in WordList and len(SearchString) == l:
                         print(SearchString,"located at x:", xval + 1,"y:", l - y,"Going Up")
