@@ -3,19 +3,18 @@
 WordList = []
 NextWord =input('Enter word to be added to search list, enter "Done!", without the quotation marks when complete:')
 while NextWord != "Done!":
-    WordList.append(NextWord)
+    WordList.append(NextWord.lower())
     NextWord = input('Enter word to be added to search list, enter "Done!", without the quotation marks when complete:')
 ## Build a dummy array to test word finding logic
 DummyArrayofArrays = []
 DummyArray1 = ["c", "a", "p", "e"]
 DummyArray2 = ["a", "a", "q", "g"]
-DummyArray3 = ["r", "j", "p", "g"]
+DummyArray3 = ["r", "a", "p", "g"]
 DummyArrayofArrays.append(DummyArray1)
 DummyArrayofArrays.append(DummyArray2)
 DummyArrayofArrays.append(DummyArray3)
 print(DummyArrayofArrays)
 x = 0
-y = 0
 l = 0
 ll = 0
 ## Get Possible lengths of words to search for
@@ -25,19 +24,37 @@ for Word in WordList:
     if l not in WordListLen:
         WordListLen.append(l)
 print(WordListLen)
-## Forward horizontal search pattern
 for length in WordListLen:
+    y = 0
+## Forward horizontal search pattern
     for array in DummyArrayofArrays:
-        ll = 0
         l = len(array)
-        c = 0
+        x = 0
         for letters in array:
-            if c + length <= l:
-                ll = 0
+            if x + length <= l:
+                c = 0
                 SearchString = ""
-                while ll < length:
-                    SearchString = SearchString + array[ll + c]
-                    ll += 1
+                while c < length:
+                    SearchString = SearchString + array[c + x]
+                    c += 1
+                if SearchString in WordList:
+                    print(SearchString,"located at x:", x + 1, "y:", y + 1, "Going right")
                 print(SearchString)
-                c + 1
-        
+                x += 1
+        y += 1
+## Reverse horizontal search pattern
+    for array in DummyArrayofArrays:
+        l = len(array)  # 4
+        x = 0 # starting position
+        for letters in array: # iterate through each letter in array
+            if x + length >= l: # starting position + search length needs to be less than array length
+                c = -1 # iteration variable per search string, start with end of string
+                SearchString = "" # search string variable duh
+                while c < length: # build search string to length of words to be searched for
+                    SearchString = SearchString + array[c - x] # see above
+                    c -= 1 # searching backwards so the iteration variable needs to de-increment instead of increment
+                if SearchString in WordList:
+                    print(SearchString,"located at x:", l - x, "y:", y + 1, "Going Left")
+                print(SearchString)
+                x += 1
+        y += 1
