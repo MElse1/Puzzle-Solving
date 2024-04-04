@@ -8,12 +8,13 @@ while NextWord != "Done!":
 ## Build a dummy array to test word finding logic
 DummyArrayofArrays = []
 DummyArray1 = ["c", "a", "p", "e"]
-DummyArray2 = ["a", "a", "q", "g"]
-DummyArray3 = ["r", "a", "p", "g"]
+DummyArray2 = ["a", "a", "p", "g"]
+DummyArray3 = ["r", "a", "e", "g"]
+DummyArray4 = ["e", "a", "p", "s"]
 DummyArrayofArrays.append(DummyArray1)
 DummyArrayofArrays.append(DummyArray2)
 DummyArrayofArrays.append(DummyArray3)
-print(DummyArrayofArrays)
+DummyArrayofArrays.append(DummyArray4)
 x = 0
 y = 0
 l = 0
@@ -24,7 +25,6 @@ for Word in WordList:
     l = len(Word)
     if l not in WordListLen:
         WordListLen.append(l)
-print(WordListLen)
 for length in WordListLen:
 ## Forward horizontal search pattern
     for array in DummyArrayofArrays:
@@ -59,13 +59,15 @@ for length in WordListLen:
         y += 1
 ## forward vertical search pattern
     x = 0
+    y = 0
+    l = len(DummyArrayofArrays) # y dimension of grid
     for yval in range(len(array)): #establish incrementing y value
-        l = len(DummyArrayofArrays) # x dimension of grid
-        y = 0 # starting position
         for xval in range(l):  # establish incrementing x value
-            if y + length <= l: # determine if the resultant string would extend past the edge of the grid
+            if yval + length <= l: # determine if the resultant string would extend past the edge of the grid
                 SearchString = ""
-                while y > length:
-                    SearchString += DummyArrayofArrays[y + yval][xval]
-                    y += 1
-                print(SearchString)
+                c = 0
+                while c < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c + y][xval])
+                    c += 1
+                    if SearchString in WordList:
+                        print(SearchString,"located at x:", xval + 1,"y:", y + 1,"Going Down")
