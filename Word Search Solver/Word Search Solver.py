@@ -15,6 +15,7 @@ DummyArrayofArrays.append(DummyArray2)
 DummyArrayofArrays.append(DummyArray3)
 print(DummyArrayofArrays)
 x = 0
+y = 0
 l = 0
 ll = 0
 ## Get Possible lengths of words to search for
@@ -25,7 +26,6 @@ for Word in WordList:
         WordListLen.append(l)
 print(WordListLen)
 for length in WordListLen:
-    y = 0
 ## Forward horizontal search pattern
     for array in DummyArrayofArrays:
         l = len(array)
@@ -39,22 +39,21 @@ for length in WordListLen:
                     c += 1
                 if SearchString in WordList:
                     print(SearchString,"located at x:", x + 1, "y:", y + 1, "Going right")
-                print(SearchString)
                 x += 1
         y += 1
+    y = 0
 ## Reverse horizontal search pattern
     for array in DummyArrayofArrays:
         l = len(array)  # 4
         x = 0 # starting position
         for letters in array: # iterate through each letter in array
-            if x + length >= l: # starting position + search length needs to be less than array length
+            if x + length <= l: # starting position + search length needs to be less than array length
                 c = -1 # iteration variable per search string, start with end of string
                 SearchString = "" # search string variable duh
-                while c < length: # build search string to length of words to be searched for
+                while abs(c + 1) < length: # build search string to length of words to be searched for
                     SearchString = SearchString + array[c - x] # see above
                     c -= 1 # searching backwards so the iteration variable needs to de-increment instead of increment
                 if SearchString in WordList:
                     print(SearchString,"located at x:", l - x, "y:", y + 1, "Going Left")
-                print(SearchString)
                 x += 1
         y += 1
