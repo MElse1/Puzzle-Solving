@@ -23,7 +23,7 @@ ll = 0
 WordListLen = []
 for Word in WordList:
     l = len(Word)
-    if l not in WordListLen:
+    if l not in WordListLen: ## deduplicate list
         WordListLen.append(l)
 for length in WordListLen:
 ## Forward horizontal search pattern
@@ -69,7 +69,7 @@ for length in WordListLen:
                 while c < length:
                     SearchString = SearchString + str(DummyArrayofArrays[c + yval][xval])
                     c += 1
-                    if SearchString in WordList and len(SearchString) == l:
+                    if SearchString in WordList and len(SearchString) == length:
                         print(SearchString,"located at x:", xval + 1,"y:", yval + 1,"Going Down")
 ## reverse vertical search pattern
     for yval in range(len(array)): #establish incrementing y value
@@ -80,5 +80,53 @@ for length in WordListLen:
                 while abs(c + 1) < length:
                     SearchString = SearchString + str(DummyArrayofArrays[c - yval][xval])
                     c -= 1
-                    if SearchString in WordList and len(SearchString) == l:
-                        print(SearchString,"located at x:", xval + 1,"y:", l - y,"Going Up")
+                    if SearchString in WordList and len(SearchString) == length:
+                        print(SearchString,"located at x:", xval + 1,"y:", l - yval,"Going Up")
+## up left search pattern
+    for yval in range(len(array)): #establish incrementing y value
+        for xval in range(l):  # establish incrementing x value
+            if yval + length <= l and xval + length <= l: # determine if the resultant string would extend past the edge of the grid
+                SearchString = ""
+                c = -1
+                while abs(c + 1) < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c - yval][c - xval])
+                    c -= 1
+                    if SearchString in WordList and len(SearchString) == length:
+                        print(SearchString,"located at x:",l - xval,"y:", l - yval,"Going Up and Left")
+## down right search pattern    
+    for yval in range(len(array)): #establish incrementing y value
+        for xval in range(l):  # establish incrementing x value
+            if yval + length <= l and xval + length <= l: # determine if the resultant string would extend past the edge of the grid
+                SearchString = ""
+                c = 0
+                while c < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c + yval][c + xval])
+                    c += 1
+                    if SearchString in WordList and len(SearchString) == length:
+                        print(SearchString,"located at x:", xval + 1,"y:", yval + 1,"Going Down and Right")
+## up right search pattern
+    for yval in range(len(array)): #establish incrementing y value
+        for xval in range(l):  # establish incrementing x value
+            if yval + length <= l and xval + length <= l: # determine if the resultant string would extend past the edge of the grid
+                SearchString = ""
+                c = -1
+                d = 0
+                while abs(c + 1) < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c - yval][d + xval])
+                    c -= 1
+                    d += 1
+                    if SearchString in WordList and len(SearchString) == length:
+                        print(SearchString,"located at x:",l - xval,"y:", l - yval,"Going Up and Right")
+## down left search pattern
+    for yval in range(len(array)): #establish incrementing y value
+        for xval in range(l):  # establish incrementing x value
+            if yval + length <= l and xval + length <= l: # determine if the resultant string would extend past the edge of the grid
+                SearchString = ""
+                c = 0
+                d = -1
+                while abs(d + 1) < length:
+                    SearchString = SearchString + str(DummyArrayofArrays[c + yval][d - xval])
+                    c += 1
+                    d -= 1
+                    if SearchString in WordList and len(SearchString) == length:
+                        print(SearchString,"located at x:",l - xval,"y:", l - yval,"Going Down and Left")                        
