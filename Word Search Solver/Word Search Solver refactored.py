@@ -32,7 +32,7 @@ for WordLen in WordListLen: ## For each length of word on the word list, importa
         for yloc in range(ydim): 
             if xloc + WordLen <= xdim: # horizontal search determine if the string will extend beyond the bounds of the grid
                 c = 0 # reset iteration variable
-                LSrch = "" # reset reverse and forward string search variables
+                LSrch = "" # reset string search variables
                 RSrch = ""
                 while c < WordLen:
                     LSrch = LSrch + DummyArrayofArrays[yloc][xloc - c - 1]
@@ -44,25 +44,43 @@ for WordLen in WordListLen: ## For each length of word on the word list, importa
                     c += 1
             if yloc + WordLen <= ydim: # vertical search determine if the string will extend beyond the bounds of the grid
                 c = 0 # reset iteration variable
-                USrch = "" # reset reverse and forward string search variables
-                LSrch = ""
+                USrch = "" # reset string search variables
+                DSrch = ""
                 while c < WordLen:
-                    RevStrSrch = RevStrSrch + DummyArrayofArrays[yloc - c - 1][xloc]
-                    StrSrch = StrSrch + DummyArrayofArrays[yloc + c][xloc]
-                    if StrSrch in WordList and len(StrSrch) == WordLen:
-                        print(StrSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down!")
-                    if RevStrSrch in WordList and len(StrSrch) == WordLen:
-                        print(StrSrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going left!")
+                    USrch = USrch + DummyArrayofArrays[yloc - c - 1][xloc]
+                    DSrch = DSrch + DummyArrayofArrays[yloc + c][xloc]
+                    if DSrch in WordList and len(DSrch) == WordLen:
+                        print(DSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down!")
+                    if USrch in WordList and len(USrch) == WordLen:
+                        print(USrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going up!")
                     c += 1
-            if yloc + WordLen <= ydim: # diagonal search determine if the string will extend beyond the bounds of the grid
+            if yloc + WordLen <= ydim and xloc + WordLen <= xdim: # diagonal search determine if the string will extend beyond the bounds of the grid
                 c = 0 # reset iteration variables
-                ULSrch = "" # reset reverse and forward string search variables
-                URSrch = ""
+                DRSrch = ""
                 while c < WordLen:
-                    RevStrSrch = RevStrSrch + DummyArrayofArrays[yloc - c - 1][xloc]
-                    StrSrch = StrSrch + DummyArrayofArrays[yloc + c][xloc]
-                    if StrSrch in WordList and len(StrSrch) == WordLen:
-                        print(StrSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down!")
-                    if RevStrSrch in WordList and len(StrSrch) == WordLen:
-                        print(StrSrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going left!")
+                    DRSrch = DRSrch + DummyArrayofArrays[yloc + c][xloc + c]
+                    if DRSrch in WordList and len(DRSrch) == WordLen:
+                        print(DRSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down and right!")
+            if yloc + 1 - WordLen >= ydim and xloc + 1 - WordLen >= xdim:
+                c = 0
+                ULSrch = "" 
+                while c < WordLen:
+                    ULSrch = ULSrch + DummyArrayofArrays[yloc - c - 1][xloc - c - 1]
+                    if ULSrch in WordList and len(ULSrch) == WordLen:
+                        print(ULSrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going up and left!")
+                URSrch = ""
+                DLSrch = ""
+                while c < WordLen:
+                    ULSrch = ULSrch + DummyArrayofArrays[yloc - c - 1][xloc - c - 1]
+##                    URSrch = URSrch + DummyArrayofArrays[yloc - c - 1][xloc + c]
+##                    DLSrch = DLSrch + DummyArrayofArrays[yloc + c][xloc - c - 1]
+##                    if DLSrch in WordList and len(DLSrch) == WordLen:
+##                        print(DLSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down and left!")
+                    if ULSrch in WordList and len(ULSrch) == WordLen:
+                        print(ULSrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going up and left!")
+
+##                    if URSrch in WordList and len(URSrch) == WordLen:
+##                        print(URSrch, "located at x:",xloc + 1,"y:",ydim - yloc, "going up and right!")
+##                    print(URSrch,DLSrch)
+                    print(yloc + c, xloc + c)
                     c += 1
