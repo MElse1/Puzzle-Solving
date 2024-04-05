@@ -23,35 +23,30 @@ for Word in WordList:
     l = len(Word)
     if l not in WordListLen: ## deduplicate list
         WordListLen.append(l)
-c = 0
-d = 0
-m = 0
 RevStrSrch = ""
 StrSrch = ""
 xdim = len(DummyArrayofArrays[0]) ## determine X dimension by the length of the first array
 ydim = len(DummyArrayofArrays) ## determine Y dimension by the length of the array of arrays
 for WordLen in WordListLen: ## For each length of word on the word list, important for determining edges of grid
     for xloc in range(xdim): 
-        for yloc in range(ydim):
-            m += 1
-            print(m) 
+        for yloc in range(ydim): 
             if xloc + WordLen <= xdim: # horizontal search determine if the string will extend beyond the bounds of the grid
                 c = 0 # reset iteration variable
-                LSrch = "" # reset string search variables
+                LSrch = "" # reset string search variables for each loop
                 RSrch = ""
-                while c < WordLen:
+                while c < WordLen: 
                     LSrch = LSrch + DummyArrayofArrays[yloc][xloc - c + WordLen - 1] # for horizontal and vertical searches we can search forward and backwards at the same tim
-                    RSrch = RSrch + DummyArrayofArrays[yloc][xloc + c]
-                    if RSrch in WordList and len(RSrch) == WordLen:
-                        print(RSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going right!")
-                    if LSrch in WordList and len(LSrch) == WordLen:
+                    RSrch = RSrch + DummyArrayofArrays[yloc][xloc + c] 
+                    if RSrch in WordList and len(RSrch) == WordLen: # if the search string matches a term on the list, the length check is to prevent double matches like cap/cape
+                        print(RSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going right!")    #! debating if I should reverse the coordinates, because as is (0,0) is the top right
+                    if LSrch in WordList and len(LSrch) == WordLen:                             #! and most people would picture (0,0) as the bottom right point.
                         print(LSrch, "located at x:",xloc + WordLen,"y:",yloc + 1, "going left!")
                     c += 1
             if yloc + WordLen <= ydim: # vertical search determine if the string will extend beyond the bounds of the grid
-                c = 0 # reset iteration variable
-                USrch = "" # reset string search variables
+                c = 0 
+                USrch = "" 
                 DSrch = ""
-                while c < WordLen: # search based on the length of the word
+                while c < WordLen: 
                     USrch = USrch + DummyArrayofArrays[yloc - c + WordLen - 1][xloc] 
                     DSrch = DSrch + DummyArrayofArrays[yloc + c][xloc]
                     if DSrch in WordList and len(DSrch) == WordLen:
@@ -60,7 +55,7 @@ for WordLen in WordListLen: ## For each length of word on the word list, importa
                         print(USrch, "located at x:",xloc + 1,"y:",yloc + WordLen, "going up!")
                     c += 1
             if yloc + WordLen <= ydim and xloc + WordLen <= xdim: # diagonal search determine if the string will extend beyond the bounds of the grid
-                c = 0 # reset iteration variables
+                c = 0 
                 DRSrch = ""
                 while c < WordLen:
                     DRSrch = DRSrch + DummyArrayofArrays[yloc + c][xloc + c]
