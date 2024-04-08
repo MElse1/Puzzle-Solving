@@ -4,11 +4,11 @@ import re
 ## as an aside, I understand that none of these are dictionaries, they are all lists, I just started with the dictofstrings variablename and didn't realize that that was an incorrect
 ## description of what they are until I was way to far into this to go back and change it
 
-dictofstrings = [] #empty list for use later
+dictofstrings = [] #empty lists for use later
 dictofstrings2 = [] 
 dictofstrings3 = []
 texttoadd = "" #empty string for use later
-word_search = pytesseract.image_to_boxes("C:\\Users\\elseh\\OneDrive\\Pictures\\Screenshots\\Word Search.png") #function to OCR the word search
+word_search = pytesseract.image_to_boxes("") #function to OCR the word search
 for text in word_search: #iterate through each character because PyTesseract outputs as one long string, and input it into an array, each character in the pytesseract output is on it's own line
     if text == '\n':
         dictofstrings.append(texttoadd)
