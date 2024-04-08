@@ -46,12 +46,12 @@ dictofstrings = [] #discard the original OCR list
 for string in dictofstrings2: #iterate through the filtered output list
     splitdict = []  #empty splitdict list
     splitdict = re.split("\s", string) #break the string into an array of strings for indexing purposes
-    if lastrow == splitdict[0]: # check to see if the vertical start position of the line has changed
-        texttoadd = "" + splitdict[1] + " " + splitdict[2]  
-        dictofstrings.append(texttoadd) # if it has not, append the string to a list
-        lastrow = splitdict[0] # set the value of lastrow to the vertical position of the current line
-    else:
-        dictofstrings3.append(dictofstrings) #if it has not, append the list to a list
+    if lastrow != splitdict[0]: # check to see if the vertical start position of the line has changed
+        dictofstrings3.append(dictofstrings)
+        dictofstrings = []
+    texttoadd = "" + splitdict[1] + " " + splitdict[2]  
+    dictofstrings.append(texttoadd) # if it has not, append the string to a list
+    lastrow = splitdict[0] # set the value of lastrow to the vertical position of the current line
 i = 0
 for list in dictofstrings3:
     dictofstrings3[i].sort(reverse=True) # sort the lists within the list of lines by lowest number to highest
