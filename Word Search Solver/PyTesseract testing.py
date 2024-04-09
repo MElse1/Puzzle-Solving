@@ -5,13 +5,14 @@ import re
 ## description of what they are until I was way to far into this to go back and change it
 done = 0
 while done != 1:
-Print("Please enter the entire path to the word search letter grid, this can be done easily by right clicking the file in windows explorer, and selected 'Copy Path'")
-wordsearchlocation = input()
-dictofstrings = [] #empty lists for use later
-dictofstrings2 = [] 
-dictofstrings3 = []
-texttoadd = "" #empty string for use later
-word_search = pytesseract.image_to_boxes(wordsearchlocation) #function to OCR the word search
+    print("Please enter the entire path to the word search letter grid, this can be done easily by right clicking the file in windows explorer, and selected 'Copy as Path'")
+    print("remove the quotation marks that are added to the text")
+    wordsearchlocation = input()
+    dictofstrings = [] #empty lists for use later
+    dictofstrings2 = [] 
+    dictofstrings3 = []
+    texttoadd = "" #empty string for use later
+    word_search = pytesseract.image_to_boxes(wordsearchlocation) #function to OCR the word search
     for text in word_search: #iterate through each character because PyTesseract outputs as one long string, and input it into an array, each character in the pytesseract output is on it's own line
         if text == '\n':
             dictofstrings.append(texttoadd)
@@ -48,8 +49,8 @@ word_search = pytesseract.image_to_boxes(wordsearchlocation) #function to OCR th
         splitdict = []  #empty splitdict list
         splitdict = re.split("\s", string) #break the string into an array of strings for indexing purposes
         if lastrow != splitdict[0]: # check to see if the vertical start position of the line has changed
-           dictofstrings3.append(dictofstrings)
-        dictofstrings = []
+            dictofstrings3.append(dictofstrings)
+            dictofstrings = []
         texttoadd = "" + splitdict[1] + " " + splitdict[2]  
         dictofstrings.append(texttoadd) # if it has not, append the string to a list
         lastrow = splitdict[0] # set the value of lastrow to the vertical position of the current line
@@ -105,4 +106,4 @@ word_search = pytesseract.image_to_boxes(wordsearchlocation) #function to OCR th
         done = 1
         print("find words")## word search script here
     else:
-        print("Word Grid Creation Failed, returning to start!")
+        print("Letter grid creation failed, starting over")
