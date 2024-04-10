@@ -1,3 +1,4 @@
+import OCR_Letter_Grid as OCG
 ## Starting with things i know how to do that won't require research
 ## First gather list of words that need to be found
 WordList = []
@@ -6,15 +7,11 @@ while NextWord != "Done!":
     WordList.append(NextWord.lower())
     NextWord = input('Enter word to be added to search list, enter "Done!", without the quotation marks when complete:')
 ## Build a dummy array to test word finding logic
-DummyArrayofArrays = []
-DummyArray1 = ["c", "a", "p", "e"]
-DummyArray2 = ["a", "a", "p", "g"]
-DummyArray3 = ["r", "a", "e", "g"]
-DummyArray4 = ["e", "a", "p", "s"]
-DummyArrayofArrays.append(DummyArray1)
-DummyArrayofArrays.append(DummyArray2)
-DummyArrayofArrays.append(DummyArray3)
-DummyArrayofArrays.append(DummyArray4)
+print("Enter the path to the picture of the letter grid")
+print("The easiest way to do this is to right click the file and select 'Copy as Path'")
+print("Make sure you remove the 's from the paste")
+x = input()
+DummyArrayofArrays = OCG.OCRLG(x)
 x = 0
 y = 0
 l = 0
