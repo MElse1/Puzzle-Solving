@@ -12,6 +12,7 @@ print("The easiest way to do this is to right click the file and select 'Copy as
 print("Make sure you remove the 's from the paste")
 x = input()
 DummyArrayofArrays = OCG.OCRLG(x)
+print(DummyArrayofArrays)
 x = 0
 y = 0
 l = 0
@@ -29,6 +30,8 @@ for length in WordListLen:
         x = 0
         for letters in array:
             if x + length <= l:
+                print(x + length)
+                print(l)
                 c = 0
                 SearchString = ""
                 while c < length:
