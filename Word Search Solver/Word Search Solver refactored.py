@@ -82,3 +82,4 @@ for WordLen in WordListLen: ## For each length of word on the word list, importa
                     if URSrch in WordList and len(URSrch) == WordLen:
                         print(URSrch, "located at x:",xloc + 1,"y:",yloc + 1, "going down and left!")
                     c += 1
+print("Note that coordinate x: 1, y: 1 is the top left corner")

@@ -53,9 +53,10 @@ def OCRLG(x):
         for string in listofstrings2: #iterate through the filtered output list
             splitlist = []  #empty splitlist list
             splitlist = re.split("\s", string) #break the string into an array of strings for indexing purposes
-            if int(splitlist[0]) - 2  <= int(lastrow) <= int(splitlist[0]) + 2:  # check to see if the vertical start position of the line has changed. The OCR measures in pixels, so the 
+            if not int(splitlist[0]) - 2  <= int(lastrow) <= int(splitlist[0]) + 2:  # check to see if the vertical start position of the line has changed. The OCR measures in pixels, so the 
                 listofstrings3.append(listofstrings)                        # + or - 5 should account for slightly diagonal grids
                 listofstrings = []
+                print(int(splitlist[0]) - 2, int(lastrow), int(splitlist[0]) + 2)
             texttoadd = "" + splitlist[1] + " " + splitlist[2]  
             listofstrings.append(texttoadd) # if it has not, append the string to a list
             lastrow = splitlist[0] # set the value of lastrow to the vertical position of the current line
@@ -82,7 +83,7 @@ def OCRLG(x):
         listofstrings3 = []
         for list in listofstrings:
             print("Line:", i, "is", list)
-            print("check the order of the letters and if incorrect input the letters with or without a space between them")
+            print("check the order of the letters and if incorrect input the letters with a space between them")
             print("Only enter the letter and spaces!!! Note: if there are any errors the entire line must be re-entered")
             print("if the entire line should be deleted enter 'DELETE', if the line is correct press enter without entering anything")
             verify = input()
