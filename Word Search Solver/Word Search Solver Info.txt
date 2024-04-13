@@ -1,3 +1,16 @@
-Task: My son came home with an april fools word search, I realized that none of the words that you were supposed to find were in the search grid after I spent entirely to much time looking.  But it got me thinking, I've been building something that uses OCR for a project I'm playing with, could I use what I've learned with OCR to make a python script that could solve a word search.
+Instructions: for this to work you need to install a few things, first you need to install Tesseract (Instructions and file found at "https://github.com/UB-Mannheim/tesseract/wiki")
+I installed Tesseract months ago, and I don't remember training it (Which could very well be the source of my pain later) so I do not think it requires training.
+You will need to install PyTesseract "pip install pytesseract", do it in a virtual environment if you wish.
+After that you should be able to run the python scripts, you will need to download OCR_Letter_Grid.py, and Word Search Solver.py
+the scripts refer to the letter grid, this needs to be an image of JUST the letters to search, the grid of letters that the words need to be located in.
 
-My plan with this task is to push every change to github before I test it, so I can kind of track my thinking in progress
+
+Task: My son came home with an april fools word search, I realized that none of the words that you were supposed to find were in the search grid after I spent entirely to much time looking.  
+It got me thinking, I've been building something that uses OCR for a project I'm playing with, could I use what I've learned with OCR to make a python script that could solve a word search.
+
+My plan with this task is to push every change to github before I test it, so I can kind of track my thinking in progress and maybe make this info file less of a brain dump at the end of the project
+
+Key take aways: free OCR solutions are kind of rough, like I state in my comments in OCR_Letter_Grid.py, I'm not disparaging the fine people who made and update tesseract, but it just didn't work well for me.  When I imagined this project, I was like "Yeah, I'll OCR the grid, it should pick up each line as a string, I'll iterate through the strings and break each letter into it's own string, should take 10 minutes, I've got a decent working knowledge of PyTesseract... I may have to build some sort of verification function to catch onesies and twosies when the OCR doesn't work right".  I then coded that, and ran some initial checks of it, and realized that my first scan of a 10x10 grid output 23 lines.... so it was back to the drawing board, then on to bounding boxxes for each letter, filtering and sorting those to rebuild the grid, and now I've built a like 75% solution.  Open to any inputs as to how to improve my OCR results...
+
+Pseudocode: I sat down and started doing the thing I thought I had a good grasp of, and by the time I was done I realized I did a lot of things pretty dumbly, I'm sure a professional coder would probably look through the commit logs of this project and laugh maniacly at how bad some of my initial swipes were.  I ended up writing the word finding logic twice, because I felt that leaving the "bad" initial code would serve as a reminder to me of this take away(I am pretty sure the final code is at least "less bad".  I probably should have written out the solution in pseudocode instead of just diving in with what was in my head.
+
