@@ -53,7 +53,7 @@ def OCRLG(x):
         for string in listofstrings2: #iterate through the filtered output list
             splitlist = []  #empty splitlist list
             splitlist = re.split("\s", string) #break the string into an array of strings for indexing purposes
-            if int(lastrow) >= int(splitlist[0]) - 5 ^ int(lastrow) <= int(splitlist[0]) - 5:  # check to see if the vertical start position of the line has changed. The OCR measures in pixels, so the 
+            if int(splitlist[0]) - 2  <= int(lastrow) <= int(splitlist[0]) + 2:  # check to see if the vertical start position of the line has changed. The OCR measures in pixels, so the 
                 listofstrings3.append(listofstrings)                        # + or - 5 should account for slightly diagonal grids
                 listofstrings = []
             texttoadd = "" + splitlist[1] + " " + splitlist[2]  
