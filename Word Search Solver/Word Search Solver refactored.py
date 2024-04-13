@@ -11,7 +11,7 @@ while NextWord != "Done!":
 ## Build a dummy array to test word finding logic
 print("Enter the path to the picture of the letter grid")
 print("The easiest way to do this is to right click the file and select 'Copy as Path'")
-print("Make sure you remove the 's from the paste")
+print("""Make sure you remove 's or "s from the path, we just need the path (IE: C:\lettergrid.png)""")
 x = input()
 listofstrings = []
 listofstrings = OCR.OCRLG(x)

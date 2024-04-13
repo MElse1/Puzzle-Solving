@@ -2,10 +2,12 @@ import pytesseract
 import re
 
 ## This OCR is kind of janky.  The logic works! (But the actual OCR process which I'm not nearly a good enough programmer to make myself is just kinda bad) I tried multiple different 
-## OCR solutions and they all had about the same eror rate. So I stuck with what I knew which was pytesseract.  The honest to  goodness best results I've seen with free off the shelf 
-## OCR comes from the windows Snipping Tool text actions feature.  If the OCR of your word search is riddled with errors when it presents the grid for you to error check, I reccomend 
+## OCR solutions and they all had about the same eror rate. So I stuck with what I knew which was tesseract.  The honest to  goodness best results I've seen with free off the shelf 
+## OCR came from the windows Snipping Tool text actions feature.  If the OCR of your word search is riddled with errors when it presents the grid for you to error check, I reccomend 
 ## just snipping the word search, and pasting it into the validation portion line by line, and deleting any extra lines.  That's actually what I ended up doing when I was
 ## troubleshooting this process, I just had the correct grid saved to a notepad file, and copied it in every time I tried the solution.
+
+## also to be clear, I'm not disparaging tesseract, as I said above, it's more complicated than I could possibly do, computer vision is a hard problem to handle for free!
 
 def OCRLG(x):
     done = 0
