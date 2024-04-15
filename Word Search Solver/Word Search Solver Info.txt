@@ -4,6 +4,9 @@ You will need to install PyTesseract "pip install pytesseract", do it in a virtu
 After that you should be able to run the python scripts, you will need to download OCR_Letter_Grid.py, and Word Search Solver.py
 the scripts refer to the letter grid, this needs to be an image of JUST the letters to search, the grid of letters that the words need to be located in.
 
+To use the dictionary version of the word search solver, the one that finds all words, not just the ones you tell it to look for, you will need to install pyenchant, if you're running windows
+it should be fairly simple, just pip install pyenchant, and it should work.  If you're running another OS the installation methods get kind of involved from what i could tell.
+
 
 Task: My son came home with an april fools word search, I realized that none of the words that you were supposed to find were in the search grid after I spent entirely to much time looking.  
 It got me thinking, I've been building something that uses OCR for a project I'm playing with, could I use what I've learned with OCR to make a python script that could solve a word search.
