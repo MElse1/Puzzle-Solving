@@ -92,5 +92,5 @@ print("Note that coordinate x: 1, y: 1 is the top left corner")
 ##else:
 ##    print(len(WordList) - len(FoundWords),"Words not found, They are:")
 ##    for word in WordList:
-##        if word not in FoundWords:
+##        if word not in FoundWords :
 ##            print(word)
