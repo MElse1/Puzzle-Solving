@@ -1,1 +1,3 @@
-Coming soon!
+It's done, it will solve Easy/Medium sodoku puzzles with a relative degree of success.  As it is it just randomly mashes numbers in and retries if it can't fill a square without breaking sodoku rules.  I need to actually make it consider the grid to get it to solve more complicated puzzles.
+
+Lessons Learned:  I learned the difference between a deep copy and shallow copy of an array, which was an interesting situation, wondering why an array was being changed when I changed the subarrays of a different array that I created using the inputs f
