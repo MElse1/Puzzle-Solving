@@ -5,7 +5,7 @@ from copy import deepcopy
 ## gather user grid
 print("Please input the 9 rows of your sodoku puzzle in the following format:")
 print("if your first line has a 7 in the 5th position type in 00007, or 000070000, the trailing 0's are not required.")
-print("if you randomly input numbers that would make the puzzle unsolvable, the script will attempt to run 20000 times before it quits")
+print("if you randomly input numbers that would make the puzzle unsolvable, the script will attempt to run 50000 times before it quits")
 gather = 0
 while gather == 0:
     try:
@@ -32,7 +32,7 @@ while gather == 0:
 inputArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 attempt = 0
 finished = 0
-while attempt <= 19999 and finished == 0:
+while attempt <= 49999 and finished == 0:
     try:    
 ## reset grid for testing
         finalGrid = []
@@ -69,7 +69,7 @@ while attempt <= 19999 and finished == 0:
                     finished = 1
     except:
         print("Placed", placed, "numbers before failure")
-        print("Random attempt number", attempt + 1, "failed, trying again.")
+        print("Attempt number", attempt + 1, "failed, trying again.")
         attempt += 1
 if finished == 1:
     print("Solution found!")
